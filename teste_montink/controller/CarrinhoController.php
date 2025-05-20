@@ -53,7 +53,7 @@
                     $array = array('cod_item'=>$key,'nome_item' => $produto['nome'] . " " . $variacao['nome_variacao'], 'quantidade' => $item['quantidade'], 'preco' => $variacao['preco_variacao']);
                     array_push($_REQUEST['carrinho'],$array);
                 }
-                if (isset($_GET['codigo_desconto'])) {
+                if (isset($_GET['codigo_desconto']) && !isset($_GET['erro_cupom'])) {
                     require_once 'model/cupom.php';
                     $cupom = new cupom();
                     $_REQUEST['cupom'] = $cupom->getByCodigoDesconto($_GET['codigo_desconto']);
